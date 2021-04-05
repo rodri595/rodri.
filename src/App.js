@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import { Switch, BrowserRouter as Router, Redirect } from "react-router-dom";
+//Utilities
+import NRoute from "./components/utilities/NormalRoute";
+
+//Pages
+import Home from "./pages/Home/Home";
+import Contact from "./pages/Contact/Contact";
+import About from "./pages/About/About";
+import NotFound from "./pages/NotFound/NotFound";
+import AOS from "aos";
+
+AOS.init();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <NRoute path="/notfound" component={NotFound} />
+        <NRoute path="/" component={Home} exact />
+        <NRoute path="/contact" component={Contact} exact />
+        <NRoute path="/about" component={About} exact />
+
+        <Redirect to="/notfound" />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
