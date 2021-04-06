@@ -1,5 +1,5 @@
-
 @charset "UTF-8";
+
 /*********** CSS TABLE OF CONTENTS *******************
 
 |--- 1.Folio Utilities
@@ -10172,55 +10172,6 @@ input:-webkit-autofill:active {
 
 .site-modal[class*="-modal-off"] {
   opacity: 0 !important;
-}
-
-/* Component -> preloader Styles */
-.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background: #495fef;
-  z-index: 9999999;
-}
-
-.preloader .counter {
-  position: relative;
-  color: #fff;
-  font-size: 16rem;
-  font-weight: 700;
-  z-index: 1;
-  display: inline-flex;
-  align-items: flex-end;
-  line-height: 1;
-}
-
-@media (max-width: 1200px) {
-  .preloader .counter {
-    font-size: calc(2.725rem + 17.7vw);
-  }
-}
-
-.preloader .counter::after {
-  content: "%";
-  font-size: 8rem;
-  line-height: 1;
-}
-
-@media (max-width: 1200px) {
-  .preloader .counter::after {
-    font-size: calc(1.925rem + 8.1vw);
-  }
-}
-
-.preloader.hide {
-  opacity: 0;
-  transition: 0.8s;
-  pointer-events: none;
 }
 
 /* Theme Indivudual Styles*/

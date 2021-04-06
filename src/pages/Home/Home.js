@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Avatar from "../../assets/images/avatar-rod.png";
+// import Rock from "../../assets/images/rock.png";
 import Page from "../../components/Page/Page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -10,15 +11,18 @@ const Home = () => {
   const [isDarkMode, setisDarkMode] = useState(false);
 
   return (
-    <Page isButtonOpen={isButtonOpen} isDarkMode={isDarkMode}>
+    <Page
+      isButtonOpen={isButtonOpen}
+      isDarkMode={isDarkMode}
+      navbar={<Header />}
+    >
       <Switcher
         setisButtonOpen={setisButtonOpen}
         setisDarkMode={setisDarkMode}
       />
-      <Header />
       <div className="hero-section">
         <div className="hero-pattern absolute-top gr-abs-top w-100 z-index-n1">
-          {/* <img src="" className="w-100 gr-opacity-1" alt="background" /> */}
+          {/* <img src={Rock} className="w-100 gr-opacity-1" alt="background" /> */}
         </div>
         <div className="container">
           <div className="row justify-content-center gr-pt-lg-15 gr-pb-lg-15 gr-pt-10 gr-pb-7">
@@ -28,6 +32,7 @@ const Home = () => {
                   {/* <i className="icon icon-code-2 gr-text-5 font-weight-bolder"></i> */}
                   <img
                     src={Avatar}
+                    alt="rodri memoji apple"
                     style={{ width: "100px" }}
                     className="icon font-weight-bolder"
                   />
@@ -45,7 +50,7 @@ const Home = () => {
                     href="/"
                     className="btn btn-primary rounded-pill pageload-link btn-hover-translate btn-hover-shadow-down goto btn-shadow"
                   >
-                    Check latest works
+                    Coming Soon
                   </a>
                 </div>
               </div>
@@ -68,7 +73,9 @@ const Home = () => {
                   href="/contact"
                   className="btn btn-secondary with-icon rounded-pill pageload-link btn-hover-translate btn-hover-shadow-down goto btn-shadow contact-modal-trigger"
                 >
-                  <i className="icon icon-chat-round-2 gr-text-8 gr-pr-5 font-weight-bolder" />
+                  <div className="wave icon  gr-text-8 gr-pr-5 font-weight-bolder">
+                    👋
+                  </div>
                   Let's Talk Now
                 </a>
               </div>

@@ -28,6 +28,7 @@ const Switcher = ({ setisButtonOpen, setisDarkMode }) => {
       setisdark(true);
       setisDarkMode(true);
     }
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

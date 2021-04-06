@@ -1,18 +1,18 @@
 import React from "react";
 
-const Page = ({ isButtonOpen, isDarkMode, children }) => {
+const Page = ({ isButtonOpen, isDarkMode, navbar, children, footer }) => {
   return (
     <body
-      // style={{ height: "100vh" }}
-      data-theme-mode-panel-active
       data-theme={isDarkMode ? "dark" : "light"}
       className={isButtonOpen ? "theme-mode-panel-open" : ""}
     >
+      {navbar}
       <main>
-        <div className="site-wrapper overflow-hidden position-relative">
+        <div className="overflow-hidden position-relative newHeight">
           {children}
         </div>
       </main>
+      {footer}
     </body>
   );
 };

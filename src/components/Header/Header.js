@@ -1,7 +1,16 @@
-import React from "react";
-import logoRodWhite from "../../assets/images/rodlogo-white.png";
-import logoRodDark from "../../assets/images/rodlogo-dark.png";
+import React, { useState } from "react";
+// import logoRodWhite from "../../assets/images/rodlogo-white.png";
+// import logoRodDark from "../../assets/images/rodlogo-dark.png";
 const Header = () => {
+  const [menuOpen, setmenuOpen] = useState(false);
+  const [supportOpen, setsupportOpen] = useState(false);
+
+  const supportOpenHandler = () => {
+    setsupportOpen((prev) => !prev);
+  };
+  const menuOpenHandler = () => {
+    setmenuOpen((prev) => !prev);
+  };
   return (
     <header className="site-header site-header-menu--right">
       <div className="container-fluid pr-lg--30 pl-lg--30">
@@ -13,7 +22,14 @@ const Header = () => {
               <h2 className="gr-text-6 font-weight-bolder">rodri.</h2>
             </a>
           </div>
-          <div className="collapse navbar-collapse" id="mobile-menu">
+          <div
+            className={
+              menuOpen
+                ? "collapse navbar-collapse show"
+                : "collapse navbar-collapse"
+            }
+            id="mobile-menu"
+          >
             <div className="navbar-nav mr--10">
               <ul className="navbar-nav main-menu">
                 <li className="nav-item">
@@ -33,16 +49,24 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
+                  <div
+                    onClick={() => supportOpenHandler()}
+                    className={
+                      supportOpen
+                        ? "nav-link dropdown-toggle show"
+                        : "nav-link dropdown-toggle "
+                    }
                     role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
                   >
                     support
-                  </a>
-                  <ul className="menu-dropdown dropdown-menu">
+                  </div>
+                  <ul
+                    className={
+                      supportOpen
+                        ? "menu-dropdown dropdown-menu show"
+                        : "menu-dropdown dropdown-menu"
+                    }
+                  >
                     <li className="drop-menu-item">
                       <a href="/"> legal </a>
                     </li>
@@ -54,24 +78,34 @@ const Header = () => {
               </ul>
             </div>
             <button
-              className="d-block d-lg-none offcanvas-btn-close"
+              onClick={() => menuOpenHandler()}
+              className={
+                menuOpen
+                  ? "d-block d-lg-none offcanvas-btn-close "
+                  : "d-block d-lg-none offcanvas-btn-close collapsed"
+              }
               type="button"
               data-toggle="collapse"
               data-target="#mobile-menu"
               aria-controls="mobile-menu"
-              aria-expanded="true"
+              aria-expanded={menuOpen ? "true" : "false"}
               aria-label="Toggle navigation"
             >
               <i className="gr-cross-icon"></i>
             </button>
           </div>
           <button
-            className="navbar-toggler btn-close-off-canvas hamburger-icon border-0"
+            onClick={() => menuOpenHandler()}
+            className={
+              menuOpen
+                ? "navbar-toggler btn-close-off-canvas hamburger-icon border-0 collapsed"
+                : "navbar-toggler btn-close-off-canvas hamburger-icon border-0"
+            }
             type="button"
             data-toggle="collapse"
             data-target="#mobile-menu"
             aria-controls="mobile-menu"
-            aria-expanded="false"
+            aria-expanded={menuOpen ? "true" : "false"}
             aria-label="Toggle navigation"
           >
             <div className="hamburger hamburger--squeeze js-hamburger">
