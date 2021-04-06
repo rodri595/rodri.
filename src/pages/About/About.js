@@ -53,7 +53,7 @@ const About = () => {
                     Email me at
                   </span>
                   <a
-                    href="mailto:hello@folio.com"
+                    href="mailto:rodrigo@magistralem.com"
                     className="gr-text-8 font-weight-bold gr-text-color link-hover-light"
                   >
                     rodrigo@magistralem.com
