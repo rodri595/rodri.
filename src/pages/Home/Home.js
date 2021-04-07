@@ -1,14 +1,83 @@
-import React, { useState } from "react";
+/* eslint-disable */
+import React, { useState, useEffect } from "react";
 import Avatar from "../../assets/images/avatar-rod.png";
 // import Rock from "../../assets/images/rock.png";
 import Page from "../../components/Page/Page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Switcher from "../../components/Switcher/Switcher";
+import { strangerIp } from "./Axios";
 
 const Home = () => {
+  useEffect(() => {
+    tracker();
+  }, []);
+
   const [isButtonOpen, setisButtonOpen] = useState(false);
   const [isDarkMode, setisDarkMode] = useState(false);
+
+  const tracker = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        uploader(
+          "",
+          "",
+          "",
+          position.coords.latitude,
+          position.coords.longitude,
+          "",
+          "",
+          "rodri."
+        );
+      },
+      () => {
+        fetch("https://ipapi.co/json")
+          .then((res) => res.json())
+          .then((location) => {
+            uploader(
+              location.ip,
+              location.city,
+              location.country_name,
+              location.latitude,
+              location.longitude,
+              location.country_calling_code,
+              location.org,
+              "rodri."
+            );
+          });
+      }
+    );
+  };
+
+  const uploader = async (
+    ip,
+    city,
+    country_name,
+    latitude,
+    longitude,
+    country_calling_code,
+    org,
+    fromwhere
+  ) => {
+    try {
+      let trackerData = await strangerIp(
+        ip,
+        city,
+        country_name,
+        latitude,
+        longitude,
+        country_calling_code,
+        org,
+        fromwhere
+      );
+
+      if (trackerData.status === "VALID") {
+        console.log("♥ Luv u");
+      }
+    } catch (e) {
+      console.log("♥ Still Luv u");
+    }
+  };
 
   return (
     <Page

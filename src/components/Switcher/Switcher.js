@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { getLocalStorage, setLocalStorage } from "../utilities/LocalStorage";
+import { getLocalStorage, setLocalStorage } from "../utilities/request";
 
 const Switcher = ({ setisButtonOpen, setisDarkMode }) => {
   const [isopen, setisopen] = useState(false);

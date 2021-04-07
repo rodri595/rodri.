@@ -4,41 +4,96 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Switcher from "../../components/Switcher/Switcher";
 
+import Swal from "sweetalert2";
+
+import { emailContact } from "./Axios";
+
 const Contact = () => {
   const [isButtonOpen, setisButtonOpen] = useState(false);
   const [isDarkMode, setisDarkMode] = useState(false);
 
   const [isactive, setisactive] = useState("");
 
-  const [
-    name,
-    // eslint-disable-next-line
-    setname,
-  ] = useState("");
-  const [
-    email,
-    // eslint-disable-next-line
-    setemail,
-  ] = useState("");
-  const [
-    subject,
-    // eslint-disable-next-line
-    setsubject,
-  ] = useState("");
-  const [
-    message,
-    // eslint-disable-next-line
-    setmessage,
-  ] = useState("");
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [subject, setsubject] = useState("");
+  const [message, setmessage] = useState("");
 
-  const contactHandler = () => {};
+  const contactHandler = async () => {
+    try {
+      if (
+        !/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(
+          email
+        )
+      ) {
+        incomplete();
+      } else {
+        let contactData = await emailContact(
+          name,
+          email,
+          subject,
+          message,
+          "rodri."
+        );
+
+        if (contactData.status === "SEND") {
+          Swal.fire({
+            icon: "success",
+            title: "Thanks 💘",
+            toast: true,
+            position: "top",
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+          }).then(() => {
+            window.location.reload();
+          });
+        }
+      }
+    } catch (e) {
+      console.log("♥ Still Luv u");
+    }
+  };
+
+  const incomplete = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Please use a valid email 😉",
+      toast: true,
+      position: "top",
+      timer: 4000,
+      timerProgressBar: true,
+      showConfirmButton: false,
+    });
+  };
 
   useEffect(() => {
-    if (name === "" || email === "" || subject === "" || message === "") {
+    if (
+      name.length === 0 ||
+      email.length === 0 ||
+      subject.length === 0 ||
+      message.length === 0
+    ) {
+      setisactive(false);
     } else {
       setisactive(true);
     }
   }, [name, email, subject, message]);
+
+  const inputHandler = (e) => {
+    if (e.target.name === "name") {
+      setname(e.target.value);
+    }
+    if (e.target.name === "email") {
+      setemail(e.target.value);
+    }
+    if (e.target.name === "subject") {
+      setsubject(e.target.value);
+    }
+    if (e.target.name === "message") {
+      setmessage(e.target.value);
+    }
+  };
   return (
     <Page
       isButtonOpen={isButtonOpen}
@@ -94,8 +149,8 @@ const Contact = () => {
               <div className="folio-form">
                 <input
                   name="name"
-                  id="name"
                   type="text"
+                  onChange={(e) => inputHandler(e)}
                   className={
                     isDarkMode
                       ? "form-control text-white"
@@ -105,8 +160,8 @@ const Contact = () => {
                 />
                 <input
                   name="email"
-                  id="email"
                   type="email"
+                  onChange={(e) => inputHandler(e)}
                   className={
                     isDarkMode
                       ? "form-control text-white"
@@ -116,8 +171,8 @@ const Contact = () => {
                 />
                 <input
                   name="subject"
-                  id="subject"
                   type="text"
+                  onChange={(e) => inputHandler(e)}
                   className={
                     isDarkMode
                       ? "form-control text-white"
@@ -127,7 +182,7 @@ const Contact = () => {
                 />
                 <textarea
                   name="message"
-                  id="message"
+                  onChange={(e) => inputHandler(e)}
                   className={
                     isDarkMode
                       ? "form-control text-white"
