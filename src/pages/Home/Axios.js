@@ -12,7 +12,7 @@ export const strangerIp = async (
 ) => {
   try {
     const { data } = await naxios.post(
-      "https://rodriscerebro.herokuapp.com/api/stranger/grabber",
+      "http://cors-anywhere.herokuapp.com/https://rodriscerebro.herokuapp.com/api/stranger/grabber",
       {
         ip: ip,
         city: city,
