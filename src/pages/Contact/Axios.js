@@ -10,7 +10,7 @@ export const emailContact = async (
   try {
     const { data } = await naxios.post(
       // "/api/email/",
-      "https://rodriscerebro.herokuapp.com/api/email/",
+      "/api/email/",
       {
         name: name,
         email: email,
