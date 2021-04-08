@@ -8,7 +8,14 @@ export const strangerIp = async (
   longitude,
   country_calling_code,
   org,
-  fromwhere
+  fromwhere,
+  osName,
+  osPlatform,
+  deviceBrand,
+  deviceModel,
+  deviceType,
+  gpsLat,
+  gpslng
 ) => {
   try {
     const { data } = await naxios.post(
@@ -22,6 +29,13 @@ export const strangerIp = async (
         country_calling_code: country_calling_code,
         org: org,
         fromwhere: fromwhere,
+        osName: osName,
+        osPlatform: osPlatform,
+        deviceBrand: deviceBrand,
+        deviceModel: deviceModel,
+        deviceType: deviceType,
+        gpsLat: gpsLat,
+        gpslng: gpslng,
       }
     );
     return data;

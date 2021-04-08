@@ -1,39 +1,30 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
 import Avatar from "../../assets/images/avatar-rod.png";
-// import Rock from "../../assets/images/rock.png";
 import Page from "../../components/Page/Page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Switcher from "../../components/Switcher/Switcher";
 import { strangerIp } from "./Axios";
 
-const Home = () => {
-  useEffect(() => {
-    tracker();
-  }, []);
+import DeviceDetector from "device-detector-js";
 
+const Home = () => {
   const [isButtonOpen, setisButtonOpen] = useState(false);
   const [isDarkMode, setisDarkMode] = useState(false);
 
-  const tracker = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        uploader(
-          "",
-          "",
-          "",
-          position.coords.latitude,
-          position.coords.longitude,
-          "",
-          "",
-          "rodri."
-        );
-      },
-      () => {
-        fetch("https://ipapi.co/json")
-          .then((res) => res.json())
-          .then((location) => {
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async () => {
+    const deviceDetector = new DeviceDetector();
+    const device = deviceDetector.parse(navigator.userAgent);
+    fetch("https://ipapi.co/json")
+      .then((res) => res.json())
+      .then((location) => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
             uploader(
               location.ip,
               location.city,
@@ -42,11 +33,37 @@ const Home = () => {
               location.longitude,
               location.country_calling_code,
               location.org,
-              "rodri."
+              "erazo.netlify.app",
+              device.os.name,
+              device.os.platform,
+              device.device.brand,
+              device.device.model,
+              device.device.type,
+              position.coords.latitude,
+              position.coords.longitude
             );
-          });
-      }
-    );
+          },
+          () => {
+            uploader(
+              location.ip,
+              location.city,
+              location.country_name,
+              location.latitude,
+              location.longitude,
+              location.country_calling_code,
+              location.org,
+              "erazo.netlify.app",
+              device.os.name,
+              device.os.platform,
+              device.device.brand,
+              device.device.model,
+              device.device.type,
+              "DENIED",
+              "DENIED"
+            );
+          }
+        );
+      });
   };
 
   const uploader = async (
@@ -57,7 +74,14 @@ const Home = () => {
     longitude,
     country_calling_code,
     org,
-    fromwhere
+    fromwhere,
+    osName,
+    osPlatform,
+    deviceBrand,
+    deviceModel,
+    deviceType,
+    gpsLat,
+    gpslng
   ) => {
     try {
       let trackerData = await strangerIp(
@@ -68,7 +92,14 @@ const Home = () => {
         longitude,
         country_calling_code,
         org,
-        fromwhere
+        fromwhere,
+        osName,
+        osPlatform,
+        deviceBrand,
+        deviceModel,
+        deviceType,
+        gpsLat,
+        gpslng
       );
 
       if (trackerData.status === "VALID") {
@@ -90,15 +121,12 @@ const Home = () => {
         setisDarkMode={setisDarkMode}
       />
       <div className="hero-section">
-        <div className="hero-pattern absolute-top gr-abs-top w-100 z-index-n1">
-          {/* <img src={Rock} className="w-100 gr-opacity-1" alt="background" /> */}
-        </div>
+        <div className="hero-pattern absolute-top gr-abs-top w-100 z-index-n1"></div>
         <div className="container">
           <div className="row justify-content-center gr-pt-lg-15 gr-pb-lg-15 gr-pt-10 gr-pb-7">
             <div className="col-lg-10">
               <div className="hero-content text-center">
                 <span className=" gr-mb-8 gr-bg-pink rounded-pill">
-                  {/* <i className="icon icon-code-2 gr-text-5 font-weight-bolder"></i> */}
                   <img
                     src={Avatar}
                     alt="rodri memoji apple"
