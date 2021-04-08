@@ -9,8 +9,7 @@ export const emailContact = async (
 ) => {
   try {
     const { data } = await naxios.post(
-      // "/api/email/",
-      "/api/email/",
+      "https://cerebro-9ao56.ondigitalocean.app/api/email/",
       {
         name: name,
         email: email,
