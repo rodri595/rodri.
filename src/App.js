@@ -9,9 +9,9 @@ import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import NotFound from "./pages/NotFound/NotFound";
-import AOS from "aos";
+// import AOS from "aos";
 
-AOS.init();
+// AOS.init();
 
 const App = () => {
   return (
