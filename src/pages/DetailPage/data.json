@@ -1,0 +1,26 @@
+[
+    {
+        "productRod": "magistralem",
+        "info": {
+            "option": "branding",
+            "web": "https://www.magistralem.com/",
+            "client": "Magistralem.",
+            "title": "Adaptable but Identifiable Product for Magistralem.",
+            "description": "To satisfy our goal of creating a brand that could adapt across many use cases, we took the base form of their new logo and used it as an artboard. As long as the structural outline of the mark stayed consistent their brand was allowed to flex and adapt to specific uses. And by introducing these illustrative elements to the logomark, Strictly found it’s voice.",
+            "time": "Jan 01, 2021",
+            "next": "agency"
+        }
+    },
+    {
+        "productRod": "agency",
+        "info": {
+            "option": "template",
+            "web": "https://talgua-tours-74k7k.ondigitalocean.app/",
+            "client": "Talgua Tours.",
+            "title": "Travel Agency Talgua Tours.",
+            "description": "Travel Agency Landing Page. Demo Template",
+            "time": "Feb 15, 2021",
+            "next": "magistralem"
+        }
+    }
+]

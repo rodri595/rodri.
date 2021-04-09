@@ -3,10 +3,10 @@ import Page from "../../components/Page/Page";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Switcher from "../../components/Switcher/Switcher";
-import Avatar from "../../assets/images/avatar-rod.png";
+import Love from "../../assets/images/iloveyou.svg";
 
-import rodSig from "../../assets/images/sigRod2.png";
-import rodSigDark from "../../assets/images/sigRodDark.png";
+import rodSigWhite from "../../assets/images/rodSigWhite.svg";
+import rodSigDark from "../../assets/images/rodSigDark.svg";
 
 const About = () => {
   const [isButtonOpen, setisButtonOpen] = useState(false);
@@ -26,17 +26,20 @@ const About = () => {
       <div className="portfolio-about-block">
         <div className="container gr-pt-lg-17 gr-pt-10 gr-pb-17">
           <div className="row">
-            <div className="col-xl-5 col-lg-6 col-md-7 col-sm-8 col-xs-9 gr-pb-8 gr-pb-lg-0">
+            <div className="col-xl-5 col-lg-6 col-md-6 col-sm-3  gr-pb-8 gr-pb-lg-0 ">
               <div className="portfolio-about-image">
                 <img
-                  src={Avatar}
+                  src={Love}
+                  style={{
+                    height: "500px",
+                  }}
                   alt="rods avatar"
                   className="w-100 "
-                  //image-box-shadow
+                  // image-box-shadow
                 />
               </div>
             </div>
-            <div className="col-lg-6 col-xl-6 offset-xl-1 col-md-7">
+            <div className="col-lg-6 col-xl-6 offset-xl-1 col-md-6 col-sm-9 ">
               <div className="portfolio-about-text">
                 <h2 className="gr-text-3 font-weight-bold gr-pb-8">
                   Rodrigo Andree Erazo Aleman
@@ -48,7 +51,7 @@ const About = () => {
                 <p className="gr-heading-color gr-pb-5">
                   Reactjs + Leafletjs + Cartographer + DBA
                 </p>
-                <div className="contact-block gr-pb-9">
+                <div className="contact-block gr-pb-6">
                   <span className="gr-text-8 d-block gr-text-color">
                     Email me at
                   </span>
@@ -59,10 +62,11 @@ const About = () => {
                     rodrigo@magistralem.com
                   </a>
                 </div>
-                <div className="signature-block gr-pt-3 gr-pb-4">
+                <div className="signature-block  gr-pb-5">
                   <img
-                    src={isDarkMode ? rodSig : rodSigDark}
+                    src={isDarkMode ? rodSigDark : rodSigWhite}
                     alt="rod's sig"
+                    style={{ height: "70px" }}
                     className="img-fluid"
                   />
                 </div>
@@ -70,7 +74,14 @@ const About = () => {
                   Rodrigo Andree Erazo Aleman
                 </h4>
                 <p className="d-block gr-text-8 gr-heading-color">
-                  Founder of Magistralem
+                  Founder of{" "}
+                  <a
+                    href="https://www.magistralem.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Magistralem
+                  </a>
                 </p>
                 <div className="social-links gr-pt-9">
                   <a

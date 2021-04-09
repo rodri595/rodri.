@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import NotFound from "./pages/NotFound/NotFound";
+import DetailPage from "./pages/DetailPage/DetailPage";
 // import AOS from "aos";
 
 // AOS.init();
@@ -21,6 +22,7 @@ const App = () => {
         <NRoute path="/" component={Home} exact />
         <NRoute path="/contact" component={Contact} exact />
         <NRoute path="/about" component={About} exact />
+        <NRoute path="/details/:product" component={DetailPage} exact />
 
         <Redirect to="/notfound" />
       </Switch>
