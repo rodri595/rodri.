@@ -1,5 +1,6 @@
 import React from "react";
-import mm from "./magistralem1.png";
+import Mapa from "../../mapa/Mapa";
+import "../../../assets/css/video.css";
 
 const Detail1 = ({ data }) => {
   return (
@@ -7,7 +8,18 @@ const Detail1 = ({ data }) => {
       <div className="banner-block">
         <div className="container-fluid gr-pl-lg-10 gr-pr-lg-10">
           <div className="protfolio-image">
-            <img src={mm} alt="Product Rodrigo" className="w-100" />
+            {data.imgFolder === undefined ? (
+              <img alt="Product Rodrigo" className="w-100" />
+            ) : (
+              <img
+                src={
+                  require(`../../../assets/images/${data.imgFolder}/1.png`)
+                    .default
+                }
+                alt="Product Rodrigo"
+                className="w-100"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -66,38 +78,66 @@ const Detail1 = ({ data }) => {
           <div className="row gr-pb-md-16 gr-pb-10">
             <div className="col-lg-12 gr-pb-md-9">
               <figure>
-                <img
-                  src="images/details-6.jpg"
-                  alt="Product Rodrigo"
-                  className="w-100"
-                />
+                {data.imgFolder === undefined ? (
+                  <img alt="Product Rodrigo detail 2" className="w-100" />
+                ) : (
+                  <img
+                    src={
+                      require(`../../../assets/images/${data.imgFolder}/2.png`)
+                        .default
+                    }
+                    alt="Product Rodrigo"
+                    className="w-100"
+                  />
+                )}
               </figure>
             </div>
             <div className="col-lg-12 gr-pb-md-9">
               <figure>
-                <img
-                  src="images/details-5.jpg"
-                  alt="Product Rodrigo"
-                  className="w-100"
-                />
+                {data.imgFolder === undefined ? (
+                  <img alt="Product Rodrigo detail 2" className="w-100" />
+                ) : (
+                  <img
+                    src={
+                      require(`../../../assets/images/${data.imgFolder}/3.png`)
+                        .default
+                    }
+                    alt="Product Rodrigo"
+                    className="w-100"
+                  />
+                )}
               </figure>
             </div>
             <div className="col-sm-6">
               <figure className="gr-pr-md-4">
-                <img
-                  src="images/details-4.jpg"
-                  alt="Product Rodrigo"
-                  className="w-100"
-                />
+                {data.imgFolder === undefined ? (
+                  <img alt="Product Rodrigo detail 2" className="w-100" />
+                ) : (
+                  <img
+                    src={
+                      require(`../../../assets/images/${data.imgFolder}/4.png`)
+                        .default
+                    }
+                    alt="Product Rodrigo"
+                    className="w-100"
+                  />
+                )}
               </figure>
             </div>
             <div className="col-sm-6">
               <figure className="gr-pl-md-4">
-                <img
-                  src="images/details-3.jpg"
-                  alt="Product Rodrigo"
-                  className="w-100"
-                />
+                {data.imgFolder === undefined ? (
+                  <img alt="Product Rodrigo detail 2" className="w-100" />
+                ) : (
+                  <img
+                    src={
+                      require(`../../../assets/images/${data.imgFolder}/5.png`)
+                        .default
+                    }
+                    alt="Product Rodrigo"
+                    className="w-100"
+                  />
+                )}
               </figure>
             </div>
           </div>
@@ -153,19 +193,48 @@ const Detail1 = ({ data }) => {
       <div className="half-theme-gray-4-bg gr-pb-md-15 gr-pb-10 gr-pt-md-0 gr-pt-10">
         <div className="container">
           <figure className="gr-mb-md-10">
-            <img
-              src="images/details-8.jpg"
-              alt="Product Rodrigo"
-              className="w-100"
-            />
+            <Mapa coordenadas={data.coords} sourceLogo={data.imgFolder} />
           </figure>
-          <figure className="gr-mb-md-10">
-            <img
-              src="images/details-7.jpg"
-              alt="Product Rodrigo"
-              className="w-100"
-            />
+          <figure className="gr-mb-md-10 text-center">
+            {data.imgFolder === undefined ? (
+              <img alt="Product Rodrigo detail 2" />
+            ) : (
+              <img
+                src={
+                  require(`../../../assets/images/${data.imgFolder}/logo.png`)
+                    .default
+                }
+                alt="Product Rodrigo"
+                // className="w-100"
+                style={{ width: "100px" }}
+              />
+            )}
           </figure>
+          <div className="row gr-pb-md-16 gr-pb-10">
+            <div className="col-lg-12 gr-pb-md-9">
+              <div className="wrapper">
+                <input type="checkbox" />
+                <div className="video">
+                  {data.imgFolder === undefined ? (
+                    ""
+                  ) : (
+                    <video
+                      src={
+                        require(`../../../assets/images/${data.imgFolder}/demo.mp4`)
+                          .default
+                      }
+                      loop
+                      autoPlay
+                      muted
+                    />
+                  )}
+                </div>
+                <div className="font-weight-bold  text">
+                  <span data-text="Sneak Peek 🔎"></span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="row justify-content-center gr-pt-md-9">
             <div className="col-xl-2 col-lg-3">
               <div className="more-link dark-bg-text">

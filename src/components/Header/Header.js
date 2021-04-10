@@ -35,6 +35,14 @@ const Header = () => {
                 <li className="nav-item">
                   <a
                     className="nav-link gr-text-color font-weight-bold modal-trigger gr-text-11 "
+                    href="/"
+                  >
+                    home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link gr-text-color font-weight-bold modal-trigger gr-text-11 "
                     href="/about"
                   >
                     About Me
